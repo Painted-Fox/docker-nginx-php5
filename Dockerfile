@@ -24,10 +24,10 @@ RUN apt-get install -y nginx \
 
 RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
 ADD nginx.conf /etc/nginx/nginx.conf
-ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/expires.conf /etc/nginx/conf/expires.conf
-ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/x-ua-compatible.conf /etc/nginx/conf/x-ua-compatible.conf
-ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/cross-domain-fonts.conf /etc/nginx/conf/cross-domain-fonts.conf
-ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/protect-system-files.conf /etc/nginx/conf/protect-system-files.conf
+ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/location/expires.conf /etc/nginx/conf/expires.conf
+ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/directive-only/x-ua-compatible.conf /etc/nginx/conf/x-ua-compatible.conf
+ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/location/cross-domain-fonts.conf /etc/nginx/conf/cross-domain-fonts.conf
+ADD https://raw.github.com/h5bp/server-configs-nginx/master/h5bp/location/protect-system-files.conf /etc/nginx/conf/protect-system-files.conf
 ADD nginx-site.conf /etc/nginx/sites-available/default
 RUN sed -i -e '/access_log/d' /etc/nginx/conf/expires.conf
 RUN sed -i -e 's/^listen =.*/listen = \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf
